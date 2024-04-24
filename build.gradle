@@ -34,6 +34,10 @@ dependencies {
     implementation 'org.springframework:spring-test:5.3.30'
     implementation 'org.springframework:spring-webmvc:5.3.30'
 
+    // jdbc추가
+    implementation "org.springframework:spring-jdbc:5.3.30"
+    implementation "org.springframework:spring-tx:5.3.30"
+
     // lombok 라이브러리 추가
     // https://mvnrepository.com/artifact/org.projectlombok/lombok
     compileOnly 'org.projectlombok:lombok:1.18.22'
@@ -51,10 +55,6 @@ dependencies {
     // https://mvnrepository.com/artifact/javax.servlet/jstl
     implementation 'javax.servlet:jstl:1.2'
 
-    // jdbc추가
-    implementation "org.springframework:spring-jdbc:5.3.30"
-    implementation "org.springframework:spring-tx:5.3.30"
-
     // MyBatis 라이브러리 추가
     // https://mvnrepository.com/artifact/org.mybatis/mybatis
     implementation 'org.mybatis:mybatis:3.5.9'
@@ -68,8 +68,13 @@ dependencies {
     // https://mvnrepository.com/artifact/com.zaxxer/HikariCP
     implementation 'com.zaxxer:HikariCP:5.0.1'
 
+    // DTO와 VO의 변환을 위한 ModelMapper
+    // https://mvnrepository.com/artifact/org.modelmapper/modelmapper
+    implementation 'org.modelmapper:modelmapper:3.0.0'
 
-
+    // DTO의 점을을 위한 validate 관련 라이브러리
+    // https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator
+    implementation 'org.hibernate.validator:hibernate-validator:6.2.1.Final'
 
 }
 

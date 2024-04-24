@@ -6,8 +6,13 @@
         </console>
     </appenders>
     <loggers>
-        <root level="info">
+        <logger name="com.example.spring_basic.mapper" level="TRACE" additivity="false">
+            <appenderRef ref="Console"/>
+        </logger>
+
+        <root level="INFO">
             <appenderRef ref="Console"/>
         </root>
     </loggers>
+
 </configuration>
