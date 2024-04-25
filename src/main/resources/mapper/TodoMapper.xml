@@ -8,4 +8,11 @@
         select now();
     </select>
 
+    <insert id="insert">
+        INSERT INTO tbl_todo (title, dueDate, writer) VALUES (#{title}, #{dueDate}, #{writer})
+    </insert>
+
+    <select id="selectAll" resultType="com.example.spring_basic.domain.TodoVO">
+        SELECT * FROM tbl_todo order by tno desc
+    </select>
 </mapper>
