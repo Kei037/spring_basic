@@ -1,5 +1,8 @@
 package com.example.spring_basic.service;
 
+import com.example.spring_basic.domain.TodoVO;
+import com.example.spring_basic.dto.PageRequestDTO;
+import com.example.spring_basic.dto.PageResponseDTO;
 import com.example.spring_basic.dto.TodoDTO;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
@@ -30,12 +33,35 @@ class TodoServiceImplTest {
         todoService.register(todoDTO);
     }
 
+//    @Test
+//    public void testGetAll() {
+//        List<TodoDTO> dtoList = todoService.getAll();
+//        for (TodoDTO todoDTO : dtoList) {
+//            log.info(todoDTO);
+//        }
+////        dtoList.forEach(todoDTO -> log.info(todoDTO));
+//    }
+
     @Test
-    public void testGetAll() {
-        List<TodoDTO> dtoList = todoService.getAll();
-        for (TodoDTO todoDTO : dtoList) {
+    public void pageingTest() {
+        PageRequestDTO pageRequestDTO = PageRequestDTO.builder().page(1).size(10).build();
+        PageResponseDTO<TodoDTO> pageResponseDTO = todoService.getList(pageRequestDTO);
+        log.info(pageResponseDTO);
+        for (TodoDTO todoDTO : pageResponseDTO.getDtoList()) {
             log.info(todoDTO);
         }
-//        dtoList.forEach(todoDTO -> log.info(todoDTO));
+    }
+
+    @Test
+    public void testModify() {
+        Long tno = 4L;
+        TodoDTO todoDTO = TodoDTO.builder()
+                .tno(tno)
+                .title("updateTest2")
+                .dueDate(LocalDate.parse("2030-01-24"))
+                .finished(true)
+                .build();
+        todoService.modify(todoDTO);
+        log.info(todoService.getOne(tno));
     }
 }

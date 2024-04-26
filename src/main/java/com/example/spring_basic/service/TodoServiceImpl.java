@@ -1,6 +1,8 @@
 package com.example.spring_basic.service;
 
 import com.example.spring_basic.domain.TodoVO;
+import com.example.spring_basic.dto.PageRequestDTO;
+import com.example.spring_basic.dto.PageResponseDTO;
 import com.example.spring_basic.dto.TodoDTO;
 import com.example.spring_basic.mapper.TodoMapper;
 import com.sun.tools.javac.comp.Todo;
@@ -28,14 +30,52 @@ public class TodoServiceImpl implements TodoService {
         todoMapper.insert(todoVO);
     }
 
+//    @Override
+//    public List<TodoDTO> getAll() {
+//        List<TodoVO> voList = todoMapper.selectAll(); // dao에서 데이터베이스에서 들고온 VO리스트를 리턴
+//        List<TodoDTO> dtoList = new ArrayList<>();
+//        for (TodoVO todoVO: voList) {
+//            TodoDTO todoDTO = modelMapper.map(todoVO, TodoDTO.class);
+//            dtoList.add(todoDTO); // DTO 리스트에 저장
+//        }
+//        return dtoList;
+//    }
+
     @Override
-    public List<TodoDTO> getAll() {
-        List<TodoVO> voList = todoMapper.selectAll(); // dao에서 데이터베이스에서 들고온 VO리스트를 리턴
+    public PageResponseDTO<TodoDTO> getList(PageRequestDTO pageRequestDTO) {
+        List<TodoVO> voList = todoMapper.selectList(pageRequestDTO);
         List<TodoDTO> dtoList = new ArrayList<>();
-        for (TodoVO todoVO: voList) {
-            TodoDTO todoDTO = modelMapper.map(todoVO, TodoDTO.class);
-            dtoList.add(todoDTO); // DTO 리스트에 저장
+        for (TodoVO todoVO : voList) {
+            dtoList.add(modelMapper.map(todoVO, TodoDTO.class));
         }
-        return dtoList;
+
+        int total = todoMapper.getCount(pageRequestDTO);
+
+        PageResponseDTO<TodoDTO> pageResponseDTO = PageResponseDTO.<TodoDTO>withAll()
+                .dtoList(dtoList)
+                .total(total)
+                .pageRequestDTO(pageRequestDTO)
+                .build();
+        return pageResponseDTO;
     }
+
+    @Override
+    public TodoDTO getOne(Long tno) {
+        TodoVO todoVO = todoMapper.selectOne(tno);
+        return modelMapper.map(todoVO, TodoDTO.class);
+    }
+
+    @Override
+    public void remove(Long tno) {
+        todoMapper.delete(tno);
+    }
+
+    @Override
+    public void modify(TodoDTO todoDTO) {
+        log.info(todoDTO);
+        TodoVO todoVO = modelMapper.map(todoDTO, TodoVO.class);
+        log.info(todoVO);
+        todoMapper.update(todoVO);
+    }
+
 }
