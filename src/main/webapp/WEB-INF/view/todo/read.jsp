@@ -68,10 +68,10 @@
               </div>
             <script>
               document.querySelector(".btn-primary").addEventListener("click", () => {
-                self.location = "/todo/modify?tno=" + ${dto.tno};
+                self.location = "/todo/modify?tno=" + ${dto.tno} + "&${pageRequestDTO.link}";
               });
               document.querySelector(".btn-secondary").addEventListener("click", () => {
-                self.location = "/todo/list";
+                self.location = "/todo/list?${pageRequestDTO.link}";
               });
             </script>
 

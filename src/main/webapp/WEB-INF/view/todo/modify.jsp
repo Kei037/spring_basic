@@ -40,6 +40,8 @@
           </div>
           <div class="card-body">
               <form action="/todo/modify" method="post">
+                <input type="hidden" name="page" value="${pageRequestDTO.page}">
+                <input type="hidden" name="size" value="${pageRequestDTO.size}">
               <div class="input-group mb-3">
                 <span class="input-group-text">tno</span>
                 <input type="text" name="tno" class="form-control" value="${dto.tno}" readonly>
@@ -89,7 +91,7 @@
                 frmView.submit();
               });
               document.querySelector(".btn-secondary").addEventListener("click", () => {
-                self.location = "/todo/list";
+                self.location = "/todo/list?${pageRequestDTO.link}";
               });
             </script>
           </div>

@@ -85,4 +85,21 @@ public class TodoMapperTest {
         PageRequestDTO pageRequestDTO = PageRequestDTO.builder().build();
         log.info(todoMapper.getCount(pageRequestDTO) / 10);
     }
+
+    @Test
+    public void testSelectSearch() {
+        PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
+                .page(1)
+                .size(10)
+                .types(new String[]{"t", "w"})
+                .keyword("스프링")
+//                .finished(true)
+                .from(LocalDate.of(2024, 04, 28))
+                .to(LocalDate.parse("2024-04-30"))
+                .build();
+        List<TodoVO> voList = todoMapper.selectList(pageRequestDTO);
+        voList.forEach(vo -> log.info(vo));
+
+        log.info(todoMapper.getCount(pageRequestDTO));
+    }
 }
