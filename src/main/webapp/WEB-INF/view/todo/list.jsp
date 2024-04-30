@@ -35,6 +35,16 @@
     <div class="row content">
       <div class="col">
         <div class="card">
+          <div class="card-body">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row content">
+      <div class="col">
+        <div class="card">
           <div class="card-header">
             Featured
           </div>
