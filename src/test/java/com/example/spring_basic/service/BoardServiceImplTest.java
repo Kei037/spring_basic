@@ -45,6 +45,17 @@ class BoardServiceImplTest {
     }
 
     @Test
+    public void testUpdate() {
+        Long no = 7L;
+        BoardDTO boardDTO = BoardDTO.builder()
+                .no(no)
+                .title("수정된 제목")
+                .content("수정된 본문")
+                .build();
+        boardService.modify(boardDTO);
+    }
+
+    @Test
     public void testRemove() {
         Long no = 3L;
         boardService.remove(no);

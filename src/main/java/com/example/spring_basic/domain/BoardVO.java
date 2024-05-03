@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Builder
 public class BoardVO {
-    private Long no;
+    private Integer no;
     private String title;
     private String content;
     private String writer;

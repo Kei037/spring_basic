@@ -1,10 +1,10 @@
 package com.example.spring_basic.controller;
 
 import com.example.spring_basic.dto.LoginDTO;
+import com.example.spring_basic.dto.MemberDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +16,17 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Log4j2
 @RequiredArgsConstructor
 public class MemberController {
+
+    @GetMapping("/register")
+    public void register() {
+        log.info("...register()");
+    }
+
+    @PostMapping("/register")
+    public void registerPost(MemberDTO memberDTO) {
+        log.info("...registerPost()");
+
+    }
 
     @GetMapping("/login")
     public void login() {

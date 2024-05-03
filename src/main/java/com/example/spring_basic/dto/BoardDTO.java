@@ -26,7 +26,6 @@ public class BoardDTO {
     @NotEmpty
     private String passwd;
 
-    @Future
     private LocalDate addDate;
 
     private Integer hit;

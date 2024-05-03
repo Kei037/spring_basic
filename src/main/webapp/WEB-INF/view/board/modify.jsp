@@ -24,7 +24,7 @@
     <form method="post">
         <div class="input-group mb-3">
             <span class="input-group-text">tno</span>
-            <input type="text" name="tno" class="form-control" value="${dto.no}" readonly>
+            <input type="text" name="no" class="form-control" value="${dto.no}" readonly>
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text">Title</span>
@@ -61,7 +61,11 @@
                 frmView.submit();
             });
 
-
+            document.querySelector(".btn-primary").addEventListener("click", () => {
+               frmView.action = '/board/modify';
+               frmView.method = 'post' ;
+               frmView.submit();
+            });
 
             document.querySelector(".btn-secondary").addEventListener("click", () => {
                 self.location = "/board/list";
