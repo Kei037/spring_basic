@@ -20,8 +20,25 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public void register(MemberDTO memberDTO) {
         MemberVO memberVO = modelMapper.map(memberDTO, MemberVO.class);
-        memberMapper.insert(memberVO);
         log.info(memberVO);
+        memberMapper.insert(memberVO);
     }
 
+    @Override
+    public boolean isMember(MemberDTO memberDTO) {
+        log.info(memberDTO);
+        MemberVO memberVO = modelMapper.map(memberDTO, MemberVO.class);
+        log.info(memberVO);
+        return memberMapper.selectOne(memberVO) != null;
+    }
+
+    @Override
+    public MemberDTO getMember(String memberId) {
+        return modelMapper.map(memberMapper.select(memberId), MemberDTO.class);
+    }
+
+    @Override
+    public void modify(MemberDTO memberDTO) {
+        memberMapper.update(modelMapper.map(memberDTO, MemberVO.class));
+    }
 }

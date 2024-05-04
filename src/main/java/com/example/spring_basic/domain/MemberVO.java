@@ -2,7 +2,7 @@ package com.example.spring_basic.domain;
 
 import lombok.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @ToString
@@ -10,14 +10,14 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Builder
 public class MemberVO {
-    private Long mno;
+    private Integer no;
     private String memberId;
-    private String memberPw;
-    private String memberName;
+    private String passwd;
+    private String name;
     private String email;
-    private String phoneNumber;
-    private String zipCode;
+    private String phone;
+    private String zipcode;
     private String address1;
     private String address2;
-    private LocalDate addDate;
+    private LocalDateTime addDate;
 }

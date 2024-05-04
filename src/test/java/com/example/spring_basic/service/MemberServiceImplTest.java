@@ -22,15 +22,46 @@ class MemberServiceImplTest {
     @Test
     void testRegister() {
         MemberDTO memberDTO = MemberDTO.builder()
-                .memberId("admin")
-                .memberPw("1234")
-                .memberName("홍길동")
+                .memberId("test4")
+                .passwd("1111")
+                .name("이름")
                 .email("test@gmail.com")
-                .zipCode("12345")
+                .zipcode("12345")
                 .address1("대구광역시 중구")
                 .address2("푸르지오 203동 202호")
                 .build();
         memberDTO.setPhone("010-1234-5678");
         memberService.register(memberDTO);
+    }
+
+    @Test
+    public void testIsMember() {
+        MemberDTO memberDTO = MemberDTO.builder()
+                .memberId("test")
+                .passwd("1112")
+                .build();
+        log.info(memberService.isMember(memberDTO));
+    }
+
+    @Test
+    public void getMember() {
+        log.info(memberService.getMember("test"));
+    }
+
+    @Test
+    public void modify() {
+        String memberId = "test";
+        MemberDTO memberDTO = MemberDTO.builder()
+                .memberId(memberId)
+                .name("테스트")
+                .email("abcc@def.com")
+                .phone1("111")
+                .phone2("2222")
+                .phone3("3333")
+                .zipcode("54321")
+                .address1("주소1")
+                .address2("주소2").build();
+        memberService.modify(memberDTO);
+        log.info(memberService.getMember(memberId));
     }
 }

@@ -5,10 +5,23 @@
 <mapper namespace="com.example.spring_basic.mapper.MemberMapper">
 
     <insert id="insert">
-        INSERT INTO member (memberId, memberPw, memberName, email, phoneNumber,
-                            zipCode, address1, address2, addDate)
-        VALUES (#{memberId}, password(#{memberPw}), #{memberName}, #{email}, #{phoneNumber},
-                #{zipCode}, #{address1}, #{address2}, now())
+        INSERT INTO member (memberId, passwd, `name`, email, phone, zipcode,
+                            address1, address2, addDate)
+        VALUES (#{memberId}, password(#{passwd}), #{name}, #{email}, #{phone}, #{zipcode},
+            #{address1}, #{address2}, now())
     </insert>
 
+    <select id="selectOne" resultType="com.example.spring_basic.domain.MemberVO">
+        SELECT * FROM member WHERE memberId = #{memberId} AND passwd = PASSWORD(#{passwd})
+    </select>
+
+    <select id="select" resultType="com.example.spring_basic.domain.MemberVO">
+        SELECT * FROM member WHERE memberID = #{memberId}
+    </select>
+
+    <update id="update">
+        UPDATE member SET `name` = #{name}, email = #{email}, phone = #{phone},
+            zipcode = #{zipcode}, address1 = #{address1}, address2 = #{address2}
+        WHERE memberId = #{memberId}
+    </update>
 </mapper>

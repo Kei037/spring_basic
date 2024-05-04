@@ -18,16 +18,43 @@ class MemberMapperTest {
 
     @Test
     public void testInsert() {
+        MemberVO memberVO = MemberVO.builder()
+                .memberId("test")
+                .passwd("1111")
+                .name("이름")
+                .email("test@abc.com")
+                .phone("111-2222-3333")
+                .zipcode("12345")
+                .address1("주소1")
+                .address2("주소2").build();
+        memberMapper.insert(memberVO);
+    }
+
+    @Test
+    void selectOne() {
+        MemberVO memberVO = MemberVO.builder()
+                .memberId("test")
+                .passwd("1111").build();
+        log.info(memberMapper.selectOne(memberVO));
+    }
+
+    @Test
+    void select() {
+        log.info(memberMapper.select("test"));
+    }
+
+    @Test
+    void update() {
+        String memberId = "test";
         MemberVO memberVo = MemberVO.builder()
-                .memberId("admin")
-                .memberPw("1234")
-                .memberName("홍길동")
-                .email("test@gmail.com")
-                .phoneNumber("01012345678")
-                .zipCode("12345")
-                .address1("대구광역시 중구")
-                .address2("푸르지오 203동 202호")
-                .build();
-        memberMapper.insert(memberVo);
+                .memberId(memberId)
+                .name("테스트")
+                .email("abcc@def.com")
+                .phone("012-3456-7890")
+                .zipcode("54321")
+                .address1("주소1")
+                .address2("주소2").build();
+        memberMapper.update(memberVo);
+        log.info(memberMapper.select(memberId));
     }
 }

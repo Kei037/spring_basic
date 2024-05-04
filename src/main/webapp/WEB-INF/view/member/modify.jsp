@@ -24,37 +24,33 @@
     <form method="post">
         <div class="input-group mb-3">
             <span class="input-group-text">아이디</span>
-            <input type="text" name="memberId" class="form-control">
-        </div>
-        <div class="input-group mb-3">
-            <span class="input-group-text">비밀번호</span>
-            <input type="password" name="passwd" class="form-control">
+            <input type="text" name="memberId" value="${dto.memberId}" class="form-control">
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text">이름</span>
-            <input type="text" name="name" class="form-control">
+            <input type="text" name="name" value="${dto.name}" class="form-control">
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text">이메일</span>
-            <input type="text" name="email" class="form-control">
+            <input type="text" name="email" value="${dto.email}" class="form-control">
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text">휴대폰번호</span>
-            <input type="text" name="phone1" class="form-control">-
-            <input type="text" name="phone2" class="form-control">-
-            <input type="text" name="phone3" class="form-control">
+            <input type="text" name="phone1" value="${dto.phone1}" class="form-control">-
+            <input type="text" name="phone2" value="${dto.phone2}" class="form-control">-
+            <input type="text" name="phone3" value="${dto.phone3}" class="form-control">
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text">우편번호</span>
-            <input type="text" name="zipcode" class="form-control">
+            <input type="text" name="zipcode" value="${dto.zipcode}" class="form-control">
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text">주소1</span>
-            <input type="text" name="address1" class="form-control">
+            <input type="text" name="address1" value="${dto.address1}" class="form-control">
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text">주소2</span>
-            <input type="text" name="address2" class="form-control">
+            <input type="text" name="address2" value="${dto.address2}" class="form-control">
         </div>
         <div class="my-4">
             <div class="float-end">
